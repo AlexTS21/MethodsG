@@ -1,5 +1,8 @@
 from ID3 import *
 from Utilities.readFile import *
+from NNetwork import nn
+
+nn = nn([1,2], ['identidad'])
 
 data = read_procesed_noID_Diabetes('E.csv')
 
