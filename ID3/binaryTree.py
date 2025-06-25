@@ -59,23 +59,25 @@ class BinaryTree:
     def printTree(self, data):
         Node.print_postOrder(self.root, data)
 
-    def test_path(self, data, id):
+    def test_path(self, dataO, data, id):
         node =  Node.path_by_dic(self.root, data, id)
-        if node.key < 0:
-            return -1
-        else:
-            variable = node.data[2]
-            if get_num_clase(data,node.data[0], variable) > 1:
+        result = Node.getClass(dataO, node.data[0], node.data[2] )
+        
+        if node.key >= 0:
+            var  = data[node.data[2]][id]
+            if result == 'GREEN':
+                return 1
+            elif result == 'RED':
+                return 0
+            elif result == 'BLUE':
+                return var
+            elif result == 'VIOLET':
+                if var == 0:
+                    return 1
+                else:
+                    return 0
+        return -1
 
-                if(data[variable][id] == 1):
-                    return 1
-                else:
-                    return 0
-            else:
-                if data[variable][node.data[0][0]] == 0:
-                    return 0
-                else:
-                    return 1
     def traverse_tree(self, node, graph, pos, x=0, y=0, layer=1, h_sep=2, v_sep=1):
         if node:
             graph.add_node(node.key)

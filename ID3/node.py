@@ -39,18 +39,21 @@ class Node:
 
     @staticmethod
     def getClass(data, index, variable):
-        cals = data['class'][index[0]]
-        flag = 0
-        i=1
+        #Contabilizar cuantas clases hay
+        
+        nclass = []
         for ind in index:
-            if(cals != data[variable][ind]):
-                flag = 1
-                break
-        if(flag == 0):
-            if(cals == 1):
+            if not data['class'][ind] in nclass :
+                nclass.append(data['class'][ind])
+        n = len(nclass)
+
+        #Cuando solo hay una clase en los datos
+        if(n == 1):
+            if(nclass[0] == 1):
                 return "GREEN"
             else:
                 return "RED"
+        #Cuando hay dos clases
         else:
             if(data['class'][index[0]] == data[variable][index[0]]):
                 return "BLUE"

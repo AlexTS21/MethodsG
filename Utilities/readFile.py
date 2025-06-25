@@ -113,7 +113,7 @@ def read_procesed_noID_Diabetes(file_path):
       if h != 'NOT':
         data[h] = []
     data['id'] = []
-    print(data.keys())
+    #print(data.keys())
     for indx, row in enumerate(reader):
       for header in data.keys():
         if header == 'id':
