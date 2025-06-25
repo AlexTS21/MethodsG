@@ -109,6 +109,7 @@ class nn:
 
                 
     def train(self, X, S, epoch=100, learningRate=0.1, normalizar=False, quiet=True):
+        errores =[]
         if normalizar:
             x_min, x_max = X.min(), X.max()
             s_min, s_max = S.min(), S.max()
@@ -127,7 +128,9 @@ class nn:
                 self.backPropagationC(s, learningRate=learningRate)
             if not quiet:
                 print(f'Epoca: {e} Error: {self.error(X, S)}')
+            errores.append(self.error(X, S))
         print(f'Error en la red: {self.error(X, S)}')
+        return errores
 
     def validacion(self, X, S, epoch=100, normalizar=False, learningRate=0.01, val=0.8):
         #Split data
