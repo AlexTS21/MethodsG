@@ -62,6 +62,8 @@ class BinaryTree:
     def test_path(self, dataO, data, id):
         node =  Node.path_by_dic(self.root, data, id)
         print(node.data[0])
+        if len(node.data[0]) == 0:
+            return -1
         result = Node.getClass(dataO, node.data[0], node.data[2] )
         
         if node.key >= 0:
